@@ -1,6 +1,6 @@
-# evs_quiz_app
+# EVS Quiz App
 
-A new Flutter application.
+EVS semester long project. In development.
 
 ## Getting Started
 
