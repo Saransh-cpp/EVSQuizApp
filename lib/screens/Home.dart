@@ -1,4 +1,6 @@
+import 'package:evs_quiz_app/provider/user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -6,16 +8,71 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
-  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
+
+    GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+
+    final userProvider = Provider.of<UserProvider>(context);
+
     return SafeArea(
       child: Scaffold(
         key: _drawerKey,
         backgroundColor: Colors.pink[50],
-        drawer: Drawer(),
+        drawer: Drawer(
+          child: InkWell(
+            child: ListView(
+              children: [
+                UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: <Color>[
+                            Colors.deepOrange,
+                            Colors.orangeAccent,
+                          ]
+                      )
+                  ),
+                  accountName: Text(
+                    userProvider.userModel?.name ?? "username loading...",
+                  ),
+                  accountEmail: Text(
+                    userProvider.userModel?.email ?? "email loading...",
+                  ),
+                ),
+                Container(
+                  height: 600,
+                  color: Colors.pink[50],
+                  child: Column(
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          Icons.logout,
+                          color: Colors.black,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_right,
+                          color: Colors.black,
+                        ),
+                        title: Text(
+                          'Sign Out',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
+                        ),
+                        onTap: () {
+                          userProvider.signOut();
+                        },
+                      ),
+                    ],
+                  ),
+                )
+
+
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.5,
