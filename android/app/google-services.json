@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "386033400301",
+    "project_id": "evsquizapp",
+    "storage_bucket": "evsquizapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386033400301:android:2156edb4dc8df711f50fe4",
+        "android_client_info": {
+          "package_name": "com.example.evs_quiz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386033400301-oo4fdrsot4b6ogsgeto510qt4b54to66.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evs_quiz_app",
+            "certificate_hash": "1483649d6e547013618dc7440f6d43eec2000bc1"
+          }
+        },
+        {
+          "client_id": "386033400301-oevbr0nvghsqd0gupnuetdg47acppifv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp_k2yl93CuJRjPDYjRglRnc-WEV120Oc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386033400301-oevbr0nvghsqd0gupnuetdg47acppifv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
