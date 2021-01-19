@@ -1,6 +1,7 @@
 import 'package:evs_quiz_app/provider/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:evs_quiz_app/widgets.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -112,6 +113,20 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (c) => QuizCard(
+                  QuestionNumber: '1',
+                  question: 'Test?',
+                  option1: 'Yes',
+                  option2: 'dk',
+                  option3: 'No',
+                  option4: 'probably',
+                  correctOption: 'Yes',
+                )));
+              },
+              child: Text('Quiz'),
             )
           ],
         )
