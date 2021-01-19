@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class QuizCard extends StatefulWidget {
@@ -18,6 +20,50 @@ class QuizCard extends StatefulWidget {
 
 class _QuizCardState extends State<QuizCard> {
 
+  int counter = 10;
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+    // counterTimer();
+  }
+
+  // counterTimer() {
+  //   while(counter>0){
+  //     setState(() {
+  //       counter -= 1;
+  //     });
+  //   }
+  // }
+
+  Timer _timer;
+  int _start = 10;
+
+  void startTimer() {
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+          (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,6 +71,28 @@ class _QuizCardState extends State<QuizCard> {
         body: Center(
           child: Column(
             children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      widget.QuestionNumber,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20
+                      ),
+                    ),
+                    Text(
+                      '${_start}',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: _start < 5 == true ? Colors.red : Colors.blueAccent
+                      ),
+                    )
+                  ],
+                ),
+              ),
               Text(widget.question),
               OptionsCard(
                 option1: widget.option1,
