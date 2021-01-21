@@ -1,5 +1,6 @@
 import 'package:evs_quiz_app/provider/user.dart';
 import 'package:evs_quiz_app/screens/Quiz.dart';
+import 'package:evs_quiz_app/screens/quizQuestionScreens/Question.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:evs_quiz_app/widgets.dart';
@@ -118,7 +119,7 @@ class _HomeState extends State<Home> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (c) => Question1()));
+                Navigator.push(context, MaterialPageRoute(builder: (c) => Question()));
               },
               child: Text('Quiz'),
             )
