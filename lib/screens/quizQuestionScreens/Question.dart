@@ -184,7 +184,7 @@ class _QuestionState extends State<Question> {
                             }
                           },
                           child: Container(
-                            color: chosen == options[questionNumber][2] ?
+                            color: chosen == options[questionNumber][1] ?
                             options[questionNumber][1] ==
                                 correctOptions[questionNumber] ?
                             Colors.greenAccent :
