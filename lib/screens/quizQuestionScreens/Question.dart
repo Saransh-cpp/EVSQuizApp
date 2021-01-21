@@ -128,15 +128,13 @@ class _QuestionState extends State<Question> {
                       children: [
                         GestureDetector(
                           onTap: () {
+                            quizData.notAttempted += 1;
                             if (!answered) {
                               setState(() {
                                 chosen = options[questionNumber][0];
                                 answered = true;
                                 if(chosen == correctOptions[questionNumber]){
                                   quizData.correct += 1;
-                                }
-                                else if(chosen == ''){
-                                  quizData.notAttempted += 1;
                                 }
                                 else{
                                   quizData.incorrect += 1;
@@ -166,15 +164,13 @@ class _QuestionState extends State<Question> {
                         ),
                         GestureDetector(
                           onTap: () {
+                            quizData.notAttempted += 1;
                             if (!answered) {
                               setState(() {
                                 chosen = options[questionNumber][1];
                                 answered = true;
                                 if(chosen == correctOptions[questionNumber]){
                                   quizData.correct += 1;
-                                }
-                                else if(chosen == ''){
-                                  quizData.notAttempted += 1;
                                 }
                                 else{
                                   quizData.incorrect += 1;
@@ -205,14 +201,12 @@ class _QuestionState extends State<Question> {
                         GestureDetector(
                           onTap: () {
                             if (!answered) {
+                              quizData.notAttempted += 1;
                               setState(() {
                                 chosen = options[questionNumber][2];
                                 answered = true;
                                 if(chosen == correctOptions[questionNumber]){
                                   quizData.correct += 1;
-                                }
-                                else if(chosen == ''){
-                                  quizData.notAttempted += 1;
                                 }
                                 else{
                                   quizData.incorrect += 1;
@@ -243,14 +237,12 @@ class _QuestionState extends State<Question> {
                         GestureDetector(
                           onTap: () {
                             if (!answered) {
+                              quizData.notAttempted += 1;
                               setState(() {
                                 chosen = options[questionNumber][3];
                                 answered = true;
                                 if(chosen == correctOptions[questionNumber]){
                                   quizData.correct += 1;
-                                }
-                                else if(chosen == ''){
-                                  quizData.notAttempted += 1;
                                 }
                                 else{
                                   quizData.incorrect += 1;
