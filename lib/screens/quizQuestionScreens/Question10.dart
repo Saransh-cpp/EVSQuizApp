@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:evs_quiz_app/screens/quizQuestionScreens/Result.dart';
 import 'package:evs_quiz_app/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _Question10State extends State<Question10> {
 
   nextTimer() {
     Timer(Duration(seconds: 10), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question10()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Result()));
     });
   }
 
