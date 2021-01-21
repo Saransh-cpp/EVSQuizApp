@@ -3,6 +3,7 @@ import 'package:evs_quiz_app/screens/Quiz.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:evs_quiz_app/widgets.dart';
+import 'package:evs_quiz_app/screens/quizQuestionScreens/Question1.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -117,7 +118,7 @@ class _HomeState extends State<Home> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (c) => Quiz()));
+                Navigator.push(context, MaterialPageRoute(builder: (c) => Question1()));
               },
               child: Text('Quiz'),
             )
