@@ -14,3 +14,30 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Goal Template
+
+- Google drive link - (https://drive.google.com/file/d/1dnn23tdJjSGAYkndAs5YemF_uftvH-3j/view?usp=sharing)
+
+## Features
+
+- Topicwise distributed Questions
+
+- User data stored in Firestore
+
+- Login / Signup / Signout Available (To save progress online)
+
+- Firebase Connectivity
+
+## Further Plans
+
+- Adding Leaderboard
+
+## Members
+
+- Saransh Chopra 
+
+- Agriya Khetarpal 
+
+- Naman Priyadarshi
+
