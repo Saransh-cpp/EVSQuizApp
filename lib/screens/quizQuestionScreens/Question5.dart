@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:evs_quiz_app/screens/quizQuestionScreens/Question3.dart';
+import 'package:evs_quiz_app/screens/quizQuestionScreens/Question6.dart';
 import 'package:evs_quiz_app/widgets.dart';
 import 'package:flutter/material.dart';
 
-class Question2 extends StatefulWidget {
+class Question5 extends StatefulWidget {
   @override
-  _Question2State createState() => _Question2State();
+  _Question5State createState() => _Question5State();
 }
 
-class _Question2State extends State<Question2> {
+class _Question5State extends State<Question5> {
   @override
   void initState() {
     super.initState();
@@ -18,7 +18,7 @@ class _Question2State extends State<Question2> {
 
   nextTimer() {
     Timer(Duration(seconds: 10), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question3()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Question6()));
     });
   }
 
