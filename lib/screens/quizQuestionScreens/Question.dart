@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:evs_quiz_app/model/quizData.dart';
 import 'package:evs_quiz_app/screens/quizQuestionScreens/Result.dart';
 import 'package:evs_quiz_app/widgets.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ class Question extends StatefulWidget {
   @override
   _QuestionState createState() => _QuestionState();
 }
-
 
 
 class _QuestionState extends State<Question> {
@@ -34,29 +34,20 @@ class _QuestionState extends State<Question> {
     '16'
   ];
 
+  Timer _timer;
+  int _start = 10;
   int questionNumber = 0;
   int counter = 10;
   String chosen ='';
   bool answered = false;
+  QuizData quizData = QuizData();
 
   @override
   void initState() {
     super.initState();
     startTimer();
     nextTimer();
-    // counterTimer();
   }
-
-  // counterTimer() {
-  //   while(counter>0){
-  //     setState(() {
-  //       counter -= 1;
-  //     });
-  //   }
-  // }
-
-  Timer _timer;
-  int _start = 10;
 
   void startTimer() {
     const oneSec = const Duration(seconds: 1);
@@ -89,22 +80,12 @@ class _QuestionState extends State<Question> {
             answered = false;
           });
         } else {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (C) => Result()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (C) => Result(
+              quizData: quizData,
+            )));
         }
       },
     );
-    // Timer(Duration(seconds: 10), () {
-    //   if(questionNumber <= questions.length) {
-    //     setState(() {
-    //       questionNumber += 1;
-    //       _start = 10;
-    //       chosen = '';
-    //     });
-    //   }
-    //   else{
-    //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (C) => Result()));
-    //   }
-    // });
   }
 
   @override
@@ -151,6 +132,15 @@ class _QuestionState extends State<Question> {
                               setState(() {
                                 chosen = options[questionNumber][0];
                                 answered = true;
+                                if(chosen == correctOptions[questionNumber]){
+                                  quizData.correct += 1;
+                                }
+                                else if(chosen == ''){
+                                  quizData.notAttempted += 1;
+                                }
+                                else{
+                                  quizData.incorrect += 1;
+                                }
                               });
                             }
                           },
@@ -180,6 +170,15 @@ class _QuestionState extends State<Question> {
                               setState(() {
                                 chosen = options[questionNumber][1];
                                 answered = true;
+                                if(chosen == correctOptions[questionNumber]){
+                                  quizData.correct += 1;
+                                }
+                                else if(chosen == ''){
+                                  quizData.notAttempted += 1;
+                                }
+                                else{
+                                  quizData.incorrect += 1;
+                                }
                               });
                             }
                           },
@@ -209,6 +208,15 @@ class _QuestionState extends State<Question> {
                               setState(() {
                                 chosen = options[questionNumber][2];
                                 answered = true;
+                                if(chosen == correctOptions[questionNumber]){
+                                  quizData.correct += 1;
+                                }
+                                else if(chosen == ''){
+                                  quizData.notAttempted += 1;
+                                }
+                                else{
+                                  quizData.incorrect += 1;
+                                }
                               });
                             }
                           },
@@ -238,6 +246,15 @@ class _QuestionState extends State<Question> {
                               setState(() {
                                 chosen = options[questionNumber][3];
                                 answered = true;
+                                if(chosen == correctOptions[questionNumber]){
+                                  quizData.correct += 1;
+                                }
+                                else if(chosen == ''){
+                                  quizData.notAttempted += 1;
+                                }
+                                else{
+                                  quizData.incorrect += 1;
+                                }
                               });
                             }
                           },
