@@ -106,6 +106,13 @@ class Question extends StatefulWidget {
 
 class _QuestionState extends State<Question> {
 
+  @override
+  void setState(fn) {
+    if(mounted){
+      super.setState(fn);
+    }
+  }
+
   Timer _timer;
   int _start = 10;
   int questionNumber = 0;
