@@ -31,7 +31,7 @@ class _ResuktState extends State<Result> {
               height: 10,
             ),
             Text(
-                '${4 - widget.quizData.notAttempted}'
+                '${10 - widget.quizData.notAttempted}'
             ),
             SizedBox(
               height: 10,

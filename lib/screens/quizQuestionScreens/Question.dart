@@ -139,6 +139,12 @@ class _QuestionState extends State<Question> {
     );
   }
 
+  @override
+  void dispose(){
+    _timer.cancel();
+    super.dispose();
+  }
+
   nextTimer() {
     const oneSec = const Duration(seconds: 10);
     _timer = new Timer.periodic(
@@ -151,7 +157,7 @@ class _QuestionState extends State<Question> {
             chosen = '';
             answered = false;
           });
-        } else {
+        } else if(questionNumber == 9){
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (C) => Result(
               quizData: quizData,
             )));
