@@ -45,7 +45,7 @@ class _NavBarState extends State<NavBar> {
                   size: 30
               ),
               Icon(
-                  Icons.shopping_cart_rounded,
+                  Icons.storage,
                   size: 30
               ),
 

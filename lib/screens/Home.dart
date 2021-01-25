@@ -105,7 +105,9 @@ class _HomeState extends State<Home> {
                     ),
                     title: TextField(
                       textInputAction: TextInputAction.search,
-                      // onSubmitted: () {},
+                      // onSubmitted: (String text) {
+                      //   FocusScope.of(context).unfocus();
+                      // },
                       decoration: InputDecoration(
                         hintText: "Type any topic",
                         border: InputBorder.none,
