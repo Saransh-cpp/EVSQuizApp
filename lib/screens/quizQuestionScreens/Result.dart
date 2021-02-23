@@ -7,10 +7,10 @@ class Result extends StatefulWidget {
   Result({this.quizData});
 
   @override
-  _ResuktState createState() => _ResuktState();
+  _ResultState createState() => _ResultState();
 }
 
-class _ResuktState extends State<Result> {
+class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
