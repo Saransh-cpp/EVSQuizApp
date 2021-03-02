@@ -1,13 +1,8 @@
-import 'dart:math';
-
 import 'package:evs_quiz_app/provider/user.dart';
 import 'package:evs_quiz_app/screens/NavBar.dart';
 import 'package:provider/provider.dart';
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'Loading.dart';
 
 class Register extends StatefulWidget {

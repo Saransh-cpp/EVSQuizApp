@@ -1,6 +1,5 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:evs_quiz_app/screens/AboutNGOs.dart';
-import 'package:evs_quiz_app/screens/AllTopics.dart';
 import 'package:evs_quiz_app/screens/Home.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,6 @@ class _NavBarState extends State<NavBar> {
   int currentIndex = 0;
   var currentTab = [
     Home(),
-    AllTopics(),
     AboutNGOs(),
   ];
 
@@ -34,14 +32,10 @@ class _NavBarState extends State<NavBar> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
             height: 60.0,
-            backgroundColor: currentIndex == 0 || currentIndex == 2 ? Colors.pink[50] : Colors.blueAccent,
+            backgroundColor: Colors.pink[50],
             items: <Widget>[
               Icon(
                   Icons.home_rounded,
-                  size: 30
-              ),
-              Icon(
-                  Icons.menu_book_rounded,
                   size: 30
               ),
               Icon(

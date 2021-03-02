@@ -108,19 +108,6 @@ class _SignInState extends State<SignIn> {
                             textAlignVertical: TextAlignVertical.bottom,
                           ),
                         ),
-                        // TextFormField(
-                        //   controller: _emailTextController,
-                        //   decoration: InputDecoration(
-                        //       hintText: 'email'
-                        //   ),
-                        //   validator: (val) => val.isEmpty ? 'Enter an email' : null,
-                        //   textAlignVertical: TextAlignVertical.bottom,
-                        //   onChanged: (val) {
-                        //     setState(() {
-                        //       email = val;
-                        //     });
-                        //   },
-                        // ),
                         SizedBox(
                           height: 20,
                         ),
@@ -156,23 +143,6 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ),
-                        // TextFormField(
-                        //   controller: _passwordTextController,
-                        //   decoration: InputDecoration(
-                        //       hintText: 'password'
-                        //   ),
-                        //   validator: (val) =>
-                        //   val.length < 6
-                        //       ? 'Enter a password 6+ chars long'
-                        //       : null,
-                        //   textAlignVertical: TextAlignVertical.bottom,
-                        //   obscureText: true,
-                        //   onChanged: (val) {
-                        //     setState(() {
-                        //       password = val;
-                        //     });
-                        //   },
-                        // ),
                         SizedBox(
                           height: 20,
                         ),
@@ -214,24 +184,6 @@ class _SignInState extends State<SignIn> {
                             ),
                           ),
                         ),
-                        // RaisedButton(
-                        //   onPressed: () async {
-                        //     if (_formKey.currentState.validate()) {
-                        //       if (!await user.signIn(_emailTextController.text,
-                        //           _passwordTextController.text)) {
-                        //         _key.currentState.showSnackBar(SnackBar(
-                        //             content: Text(
-                        //                 "Sign in failed")));
-                        //       }
-                        //       Navigator.pushReplacement(
-                        //           context, MaterialPageRoute(builder: (c) =>
-                        //           NavBar()));
-                        //     }
-                        //   },
-                        //   child: Text(
-                        //       'Sign in'
-                        //   ),
-                        // ),
                         SizedBox(
                           height: 30,
                         ),
