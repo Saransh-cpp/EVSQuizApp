@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evs_quiz_app/model/user.dart';
-import 'package:flutter/cupertino.dart';
 
 class UserServices {
   FirebaseFirestore _firestore = FirebaseFirestore.instance;

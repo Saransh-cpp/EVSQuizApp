@@ -22,7 +22,6 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 
-  //Santos
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
   final _key = GlobalKey<ScaffoldState>();
@@ -38,6 +37,7 @@ class _RegisterState extends State<Register> {
   String error = '';
   String name = '';
   bool hidePass = true;
+  bool confirmPass = true;
   String userImageUrl = '';
 
 
@@ -162,30 +162,6 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                       ),
-                      // ListTile(
-                      //   title: TextFormField(
-                      //     controller: _passwordTextController,
-                      //     validator: (val) =>
-                      //     val.length < 6
-                      //         ? 'Enter a password 6+ chars long'
-                      //         : null,
-                      //     textAlignVertical: TextAlignVertical.bottom,
-                      //     obscureText: hidePass,
-                      //     // net ninja
-                      //     onChanged: (val) {
-                      //       setState(() {
-                      //         password = val;
-                      //       });
-                      //     },
-                      //   ),
-                      //   trailing: IconButton(
-                      //       icon: Icon(Icons.remove_red_eye),
-                      //       onPressed: () {
-                      //         setState(() {
-                      //           hidePass = !hidePass;
-                      //         });
-                      //       }),
-                      // ),
                       SizedBox(
                         height: 20,
                       ),
@@ -204,14 +180,14 @@ class _RegisterState extends State<Register> {
                               icon: Icon(Icons.remove_red_eye),
                               onPressed: () {
                                 setState(() {
-                                  hidePass = !hidePass;
+                                  confirmPass = !confirmPass;
                                 });
                               }),
                           title: TextFormField(
-                            obscureText: hidePass,
+                            obscureText: confirmPass,
                             controller: _confirmPasswordController,
                             decoration: InputDecoration(
-                              hintText: "Enter password",
+                              hintText: "Confirm password",
                             ),
                             validator: (val) =>
                             val.length < 6
@@ -221,20 +197,6 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                       ),
-                      // TextFormField(
-                      //   controller: _confirmPasswordController,
-                      //   validator: (val) =>
-                      //   val.length < 6
-                      //       ? 'Enter a password 6+ chars long'
-                      //       : null,
-                      //   textAlignVertical: TextAlignVertical.bottom,
-                      //   obscureText: true,
-                      //   //onChanged: (val) {
-                      //   //setState(() {
-                      //   //password = val;
-                      //   //});
-                      //   //},
-                      // ),
                       SizedBox(
                         height: 20,
                       ),
@@ -279,28 +241,6 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                       ),
-                      // RaisedButton(
-                      //   onPressed: () async {
-                      //     // net ninja
-                      //     //if (_formKey.currentState.validate()) {
-                      //
-                      //     if (_formKey.currentState.validate()) {
-                      //       if (!await user.signUp(
-                      //           _nameTextController.text,
-                      //           _emailTextController.text,
-                      //           _passwordTextController.text)) {
-                      //         _key.currentState.showSnackBar(SnackBar(
-                      //             content: Text("Sign up failed")));
-                      //         return;
-                      //       }
-                      //       Navigator.pushReplacement(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //               builder: (c) => NavBar()));
-                      //     }
-                      //   },
-                      //   child: Text('Register'),
-                      // ),
                       SizedBox(
                         height: 15,
                       ),
@@ -310,7 +250,8 @@ class _RegisterState extends State<Register> {
                         },
                         child: Text(
                           'I already have an account',
-                          style: TextStyle(color: Colors.lightBlueAccent[100], fontSize: 15),
+                          style: TextStyle(
+                              color: Colors.lightBlueAccent[100], fontSize: 15),
                         ),
                       ),
                       Text(

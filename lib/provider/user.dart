@@ -60,10 +60,7 @@ class UserProvider with ChangeNotifier {
           'name': name,
           'email': email,
           'uid': user.user.uid,
-          'stripeId': '',
-          'number': '',
-          'bio': '',
-          'userImage': '',
+          'highscore': 0,
         });
         _userModel = await _userServices.getUserById(user.user.uid);
         notifyListeners();
@@ -78,31 +75,31 @@ class UserProvider with ChangeNotifier {
     }
   }
 
-  Future<bool> updateUser(String name, String email, String number, String address, String bio) async {
-    try {
-      // _status = Status.Authenticating;
-      // notifyListeners();
-      print("CREATE USER");
-      await _userServices.createUser({
-        'name': name,
-        'email': email,
-        'uid': user.uid,
-        'stripeId': '',
-        'number': number,
-        'bio': bio,
-        'userImage': '',
-      });
-      _userModel = await _userServices.getUserById(user.uid);
-      notifyListeners();
-
-      return true;
-    } catch (e) {
-      _status = Status.Unauthenticated;
-      notifyListeners();
-      print(e.toString());
-      return false;
-    }
-  }
+  // Future<bool> updateUser(String name, String email, String number, String address, String bio) async {
+  //   try {
+  //     // _status = Status.Authenticating;
+  //     // notifyListeners();
+  //     print("CREATE USER");
+  //     await _userServices.createUser({
+  //       'name': name,
+  //       'email': email,
+  //       'uid': user.uid,
+  //       'stripeId': '',
+  //       'number': number,
+  //       'bio': bio,
+  //       'userImage': '',
+  //     });
+  //     _userModel = await _userServices.getUserById(user.uid);
+  //     notifyListeners();
+  //
+  //     return true;
+  //   } catch (e) {
+  //     _status = Status.Unauthenticated;
+  //     notifyListeners();
+  //     print(e.toString());
+  //     return false;
+  //   }
+  // }
 
   Future signOut() async {
     _auth.signOut();
