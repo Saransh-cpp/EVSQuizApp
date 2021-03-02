@@ -30,7 +30,7 @@ class QuizQuestionAndAnswers {
     ['What resource does the plant with the biological name Crocus sativus provide?', ['Cumin seeds', 'Saffron', 'Opium', 'Turmeric', 'Saffron']],
     ['What is the name of the world’s largest glacier in eastern Antarctica?', ['Lambert Glacier', 'Meola Glacier', 'Mertz Glacier', 'David Glacier', 'Lambert Glacier']],
     ['Which environmentalist has won both a Nobel and an Oscar?', ['David Attenborough', 'George Monbiot', 'Al Gore', 'Leonardo DiCaprio', 'Al Gore']],
-    ['Which Indian emperor passed a law in the 3rd century B.C which prevented the cutting of trees for personal use?', ['Ashoka', 'Chalukya', 'Rajaraja Chola', 'Maurya', 'Ashoka']]
+    ['Which Indian emperor passed a law in the 3rd century B.C which prevented the cutting of trees for personal use?', ['Ashoka', 'Chalukya', 'Rajaraja Chola', 'Maurya', 'Ashoka']],
     ['The three women – Jane Goodall, Dian Fossey, and Birute Galdikas are collectively known as what, for their extensive study and works towards the conservation of gorillas?', ['Trimates', 'Musketeers', 'Orangutans', 'Gorilla’s Angels', 'Trimates']],
     ['What is the name of Wikipedia’s annual photo contest with an aim towards the conservation of the environment?', ['Wiki Long Life', 'Wiki Photo World', 'Wiki Loves Earth', 'Wiki Conservation Contest', 'Wiki Loves Earth']],
     ['Which scientist is popularly known as the ‘Father of Acid Rain’? ', ['Joseph Black', ', David Brewster', 'Humphry Davy', 'Robert Angus Smith', 'Robert Angus Smith']],

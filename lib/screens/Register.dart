@@ -39,7 +39,6 @@ class _RegisterState extends State<Register> {
   String name = '';
   bool hidePass = true;
   String userImageUrl = '';
-  File _imageFile;
 
 
   @override
@@ -48,175 +47,281 @@ class _RegisterState extends State<Register> {
     double _screenWidth = MediaQuery
         .of(context)
         .size
-        .width;
+        .width / 1.1;
     double _screenHeight = MediaQuery
         .of(context)
         .size
         .height;
-    return Scaffold(
-      backgroundColor: Colors.yellow,
-      key: _key,
-      body: user.status == Status.Authenticating ? Loading() : Scaffold(
-        backgroundColor: Colors.pink[50],
-        body: Center(
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  Text(
-                    'Welcome to\n Chapter 3',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20
-                    ),
+    return user.status == Status.Authenticating ? Loading() : Scaffold(
+      backgroundColor: Colors.indigo[600],
+      body: Center(
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 70,
+                ),
+                Text(
+                  'Welcome to\n EcoKnow!',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40
                   ),
-                  Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 60,
+                ),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 60,
+                      ),
+                      Container(
+                        height: 70,
+                        width: _screenWidth,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(10)),
                         ),
-                        Container(
-                          width: _screenWidth,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(10)),
-                          ),
-                          padding: EdgeInsets.all(8),
-                          margin: EdgeInsets.all(0),
-                          child: TextFormField(
-                            controller: _nameTextController,
-                            decoration: InputDecoration(
-                                hintText: "Enter Name",
-                                prefixIcon: Icon(Icons.person)),
-                            validator: (val) =>
-                            val.isEmpty ? 'Enter a name' : null,
-                            textAlignVertical: TextAlignVertical.bottom,
-                          ),
+                        padding: EdgeInsets.all(8),
+                        margin: EdgeInsets.all(0),
+                        child: TextFormField(
+                          controller: _nameTextController,
+                          decoration: InputDecoration(
+                              hintText: "Enter Name",
+                              prefixIcon: Icon(Icons.person)),
+                          validator: (val) =>
+                          val.isEmpty ? 'Enter a name' : null,
+                          textAlignVertical: TextAlignVertical.bottom,
                         ),
-                        SizedBox(
-                          height: 20,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 70,
+                        width: _screenWidth,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(10)),
                         ),
-                        Container(
-                          width: _screenWidth,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(10)),
-                          ),
-                          padding: EdgeInsets.all(8),
-                          margin: EdgeInsets.all(0),
-                          child: TextFormField(
-                            controller: _emailTextController,
-                            decoration: InputDecoration(
-                                hintText: "Enter email",
-                                prefixIcon: Icon(Icons.email)),
-                            validator: (val) =>
-                            val.isEmpty ? 'Enter an email' : null,
-                            textAlignVertical: TextAlignVertical.bottom,
-                            // net ninja
-                            onChanged: (val) {
-                              setState(() {
-                                email = val;
-                              });
-                            },
-                          ),
+                        padding: EdgeInsets.all(8),
+                        margin: EdgeInsets.all(0),
+                        child: TextFormField(
+                          controller: _emailTextController,
+                          decoration: InputDecoration(
+                              hintText: "Enter email",
+                              prefixIcon: Icon(Icons.email)),
+                          validator: (val) =>
+                          val.isEmpty ? 'Enter an email' : null,
+                          textAlignVertical: TextAlignVertical.bottom,
+                          // net ninja
+                          onChanged: (val) {
+                            setState(() {
+                              email = val;
+                            });
+                          },
                         ),
-                        SizedBox(
-                          height: 20,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 70,
+                        width: _screenWidth,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(10)),
                         ),
-                        ListTile(
-                          title: TextFormField(
-                            controller: _passwordTextController,
-                            validator: (val) =>
-                            val.length < 6
-                                ? 'Enter a password 6+ chars long'
-                                : null,
-                            textAlignVertical: TextAlignVertical.bottom,
-                            obscureText: hidePass,
-                            // net ninja
-                            onChanged: (val) {
-                              setState(() {
-                                password = val;
-                              });
-                            },
-                          ),
-                          trailing: IconButton(
+                        padding: EdgeInsets.all(8),
+                        margin: EdgeInsets.all(0),
+                        child: ListTile(
+                          leading: IconButton(
                               icon: Icon(Icons.remove_red_eye),
                               onPressed: () {
                                 setState(() {
                                   hidePass = !hidePass;
                                 });
                               }),
+                          title: TextFormField(
+                            obscureText: hidePass,
+                            controller: _passwordTextController,
+                            decoration: InputDecoration(
+                              hintText: "Enter password",
+                            ),
+                            validator: (val) =>
+                            val.length < 6
+                                ? 'Enter a password 6+ chars long'
+                                : null,
+                            textAlignVertical: TextAlignVertical.bottom,
+                          ),
                         ),
-                        SizedBox(
-                          height: 20,
+                      ),
+                      // ListTile(
+                      //   title: TextFormField(
+                      //     controller: _passwordTextController,
+                      //     validator: (val) =>
+                      //     val.length < 6
+                      //         ? 'Enter a password 6+ chars long'
+                      //         : null,
+                      //     textAlignVertical: TextAlignVertical.bottom,
+                      //     obscureText: hidePass,
+                      //     // net ninja
+                      //     onChanged: (val) {
+                      //       setState(() {
+                      //         password = val;
+                      //       });
+                      //     },
+                      //   ),
+                      //   trailing: IconButton(
+                      //       icon: Icon(Icons.remove_red_eye),
+                      //       onPressed: () {
+                      //         setState(() {
+                      //           hidePass = !hidePass;
+                      //         });
+                      //       }),
+                      // ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 70,
+                        width: _screenWidth,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(10)),
                         ),
-                        TextFormField(
-                          controller: _confirmPasswordController,
-                          validator: (val) =>
-                          val.length < 6
-                              ? 'Enter a password 6+ chars long'
-                              : null,
-                          textAlignVertical: TextAlignVertical.bottom,
-                          obscureText: true,
-                          //onChanged: (val) {
-                          //setState(() {
-                          //password = val;
-                          //});
-                          //},
+                        padding: EdgeInsets.all(8),
+                        margin: EdgeInsets.all(0),
+                        child: ListTile(
+                          leading: IconButton(
+                              icon: Icon(Icons.remove_red_eye),
+                              onPressed: () {
+                                setState(() {
+                                  hidePass = !hidePass;
+                                });
+                              }),
+                          title: TextFormField(
+                            obscureText: hidePass,
+                            controller: _confirmPasswordController,
+                            decoration: InputDecoration(
+                              hintText: "Enter password",
+                            ),
+                            validator: (val) =>
+                            val.length < 6
+                                ? 'Enter a password 6+ chars long'
+                                : null,
+                            textAlignVertical: TextAlignVertical.bottom,
+                          ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        RaisedButton(
-                          onPressed: () async {
-                            // net ninja
-                            //if (_formKey.currentState.validate()) {
-
-                            if (_formKey.currentState.validate()) {
-                              if (!await user.signUp(
-                                  _nameTextController.text,
-                                  _emailTextController.text,
-                                  _passwordTextController.text)) {
-                                _key.currentState.showSnackBar(SnackBar(
-                                    content: Text("Sign up failed")));
-                                return;
-                              }
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (c) => NavBar()));
+                      ),
+                      // TextFormField(
+                      //   controller: _confirmPasswordController,
+                      //   validator: (val) =>
+                      //   val.length < 6
+                      //       ? 'Enter a password 6+ chars long'
+                      //       : null,
+                      //   textAlignVertical: TextAlignVertical.bottom,
+                      //   obscureText: true,
+                      //   //onChanged: (val) {
+                      //   //setState(() {
+                      //   //password = val;
+                      //   //});
+                      //   //},
+                      // ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          if (_formKey.currentState.validate()) {
+                            if (!await user.signUp(
+                                _nameTextController.text,
+                                _emailTextController.text,
+                                _passwordTextController.text)) {
+                              _key.currentState.showSnackBar(SnackBar(
+                                  content: Text("Sign up failed")));
+                              return;
                             }
-                          },
-                          child: Text('Register'),
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            widget.toggleView();
-                          },
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (c) => NavBar()));
+                          }
+                        },
+                        child: Container(
+                          width: _screenWidth,
+                          height: 50,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(2),
+                          // 15
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                          ),
                           child: Text(
-                            'I already have an account',
-                            style: TextStyle(color: Colors.red, fontSize: 15),
+                            "Sign Up",
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .button
+                                .copyWith(color: Colors.black),
                           ),
                         ),
-                        Text(
-                          error,
-                          style: TextStyle(
-                            color: Colors.red,
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      // RaisedButton(
+                      //   onPressed: () async {
+                      //     // net ninja
+                      //     //if (_formKey.currentState.validate()) {
+                      //
+                      //     if (_formKey.currentState.validate()) {
+                      //       if (!await user.signUp(
+                      //           _nameTextController.text,
+                      //           _emailTextController.text,
+                      //           _passwordTextController.text)) {
+                      //         _key.currentState.showSnackBar(SnackBar(
+                      //             content: Text("Sign up failed")));
+                      //         return;
+                      //       }
+                      //       Navigator.pushReplacement(
+                      //           context,
+                      //           MaterialPageRoute(
+                      //               builder: (c) => NavBar()));
+                      //     }
+                      //   },
+                      //   child: Text('Register'),
+                      // ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          widget.toggleView();
+                        },
+                        child: Text(
+                          'I already have an account',
+                          style: TextStyle(color: Colors.red, fontSize: 15),
+                        ),
+                      ),
+                      Text(
+                        error,
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
+                      )
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
