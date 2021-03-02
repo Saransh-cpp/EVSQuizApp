@@ -33,9 +33,9 @@ class _NavBarState extends State<NavBar> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
             height: 60.0,
-            // color: Colors.black,
+            backgroundColor: Colors.pink[50],
             // buttonBackgroundColor: Colors.white,
-            backgroundColor: Colors.black87,
+            color: Colors.white,
             items: <Widget>[
               Icon(
                   Icons.home_rounded,

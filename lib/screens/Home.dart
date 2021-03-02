@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         key: _drawerKey,
-        backgroundColor: Colors.indigo[600],
+        backgroundColor: Colors.pink[50],
         drawer: Drawer(
           child: InkWell(
             child: ListView(
@@ -28,19 +28,67 @@ class _HomeState extends State<Home> {
                 UserAccountsDrawerHeader(
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
+                        colors: [Colors.pink[100], Colors.pink[100]],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       )),
                   accountName: Text(
                     userProvider.userModel?.name ?? "username loading...",
+                    style: TextStyle(
+                      fontSize: 25
+                    ),
                   ),
                   accountEmail: Text(
                     userProvider.userModel?.email ?? "email loading...",
+                      style: TextStyle(
+                          fontSize: 20
+                      )
                   ),
                 ),
                 Column(
                   children: [
+                    ListTile(
+                      leading: Icon(
+                        Icons.person,
+                        color: Colors.black,
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_right,
+                        color: Colors.black,
+                      ),
+                      title: Text(
+                        'About us',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
+                      onTap: () {
+                        // userProvider.signOut();
+                      },
+                    ),
+                    Divider(),
+                    ListTile(
+                      leading: Icon(
+                        Icons.people,
+                        color: Colors.black,
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_right,
+                        color: Colors.black,
+                      ),
+                      title: Text(
+                        'Contributors',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
+                      onTap: () {
+                        // userProvider.signOut();
+                      },
+                    ),
+                    Divider(),
                     ListTile(
                       leading: Icon(
                         Icons.logout,
@@ -71,18 +119,19 @@ class _HomeState extends State<Home> {
         ),
         appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor: Colors.white,
-          elevation: 0.5,
+          backgroundColor: Colors.pink[50],
+          elevation: 0,
           iconTheme: IconThemeData(
               color: Colors.black87
           ),
-          title: Text(
-            'EcoKnow',
-            style: TextStyle(
-                color: Colors.black87,
-                fontSize: 30
-            ),
-          ),
+          // title: Text(
+          //   'EcoKnow',
+          //   textAlign: TextAlign.center,
+          //   style: TextStyle(
+          //       color: Colors.black87,
+          //       fontSize: 30
+          //   ),
+          // ),
         ),
         body: ListView(
           children: [
@@ -92,7 +141,7 @@ class _HomeState extends State<Home> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   gradient: LinearGradient(
-                    colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
+                    colors: [Colors.pink[400], Colors.pink[100]],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   )
@@ -110,7 +159,7 @@ class _HomeState extends State<Home> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   gradient: LinearGradient(
-                    colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
+                    colors: [Colors.pink[400], Colors.pink[100]],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   )
@@ -191,11 +240,14 @@ class _HomeState extends State<Home> {
                         question10correctoption: 'yes',
                       )));
                 },
-                child: Text(
-                  'Test your\nknowledge now!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    'Test your\nknowledge now!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25
+                    ),
                   ),
                 ),
               ),
@@ -205,25 +257,31 @@ class _HomeState extends State<Home> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   gradient: LinearGradient(
-                    colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
+                    colors: [Colors.pink[400], Colors.pink[100]],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
             ),
-              child: Column(
-                children: [
-                  Text(
-                    'Your highest score:',
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'Take the quiz again to boost\nyour score!',
-                    textAlign: TextAlign.center,
-                  )
-                ],
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                child: Column(
+                  children: [
+                    Text(
+                      'Your highest score:',
+                      // textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'Take the quiz again to boost your score!',
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                ),
               ),
             )
           ],
