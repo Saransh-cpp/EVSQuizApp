@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:evs_quiz_app/model/quizData.dart';
 import 'package:evs_quiz_app/screens/quizQuestionScreens/Result.dart';
 import 'package:evs_quiz_app/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Question extends StatefulWidget {
@@ -175,7 +176,6 @@ class _QuestionState extends State<Question> {
 
   @override
   Widget build(BuildContext context) {
-
     var questions = [
       widget.question1,
       widget.question2,
@@ -190,16 +190,66 @@ class _QuestionState extends State<Question> {
     ];
 
     var options = [
-      [widget.question1option1, widget.question1option2, widget.question1option3, widget.question1option4],
-      [widget.question2option1, widget.question2option2, widget.question2option3, widget.question2option4],
-      [widget.question3option1, widget.question3option2, widget.question3option3, widget.question3option4],
-      [widget.question4option1, widget.question4option2, widget.question4option3, widget.question4option4],
-      [widget.question5option1, widget.question5option2, widget.question5option3, widget.question5option4],
-      [widget.question6option1, widget.question6option2, widget.question6option3, widget.question6option4],
-      [widget.question7option1, widget.question7option2, widget.question7option3, widget.question7option4],
-      [widget.question8option1, widget.question8option2, widget.question8option3, widget.question8option4],
-      [widget.question9option1, widget.question9option2, widget.question9option3, widget.question9option4],
-      [widget.question10option1, widget.question10option2, widget.question10option3, widget.question10option4]
+      [
+        widget.question1option1,
+        widget.question1option2,
+        widget.question1option3,
+        widget.question1option4
+      ],
+      [
+        widget.question2option1,
+        widget.question2option2,
+        widget.question2option3,
+        widget.question2option4
+      ],
+      [
+        widget.question3option1,
+        widget.question3option2,
+        widget.question3option3,
+        widget.question3option4
+      ],
+      [
+        widget.question4option1,
+        widget.question4option2,
+        widget.question4option3,
+        widget.question4option4
+      ],
+      [
+        widget.question5option1,
+        widget.question5option2,
+        widget.question5option3,
+        widget.question5option4
+      ],
+      [
+        widget.question6option1,
+        widget.question6option2,
+        widget.question6option3,
+        widget.question6option4
+      ],
+      [
+        widget.question7option1,
+        widget.question7option2,
+        widget.question7option3,
+        widget.question7option4
+      ],
+      [
+        widget.question8option1,
+        widget.question8option2,
+        widget.question8option3,
+        widget.question8option4
+      ],
+      [
+        widget.question9option1,
+        widget.question9option2,
+        widget.question9option3,
+        widget.question9option4
+      ],
+      [
+        widget.question10option1,
+        widget.question10option2,
+        widget.question10option3,
+        widget.question10option4
+      ]
     ];
 
     var correctOptions = [
@@ -217,190 +267,272 @@ class _QuestionState extends State<Question> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.pink[50],
         body: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Container(
+
+              child: Column(
                   children: [
-                    Text(
-                      '$questionNumber',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${questionNumber + 1}',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20
+                            ),
+                          ),
+                          Text(
+                            '${_start}',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: _start < 5 == true ? Colors.red : Colors
+                                    .blueAccent
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                    Text(
-                      '${_start}',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: _start < 5 == true ? Colors.red : Colors
-                              .blueAccent
+                    SizedBox(height: 20,),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      height: 550,
+                      decoration: BoxDecoration(
+                          color: Colors.indigo[100],
+                          borderRadius:
+                          BorderRadius.all(Radius.circular(50))),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20.0, 40, 20, 0),
+                            child: Text(
+                            questions[questionNumber],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20
+                            ),
+                        ),
+                          ),
+                          SizedBox(height: 30,),
+                          // Divider(color: Colors.black,),
+                          // SizedBox(height: 50,),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(30)),
+                            ),
+                            child: Column(
+                              children: [
+                                ListView(
+                                  shrinkWrap: true,
+                                  physics: ScrollPhysics(),
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        quizData.notAttempted += 1;
+                                        if (!answered) {
+                                          setState(() {
+                                            chosen = options[questionNumber][0];
+                                            answered = true;
+                                            if (chosen ==
+                                                correctOptions[questionNumber]) {
+                                              quizData.correct += 1;
+                                            }
+                                            else {
+                                              quizData.incorrect += 1;
+                                            }
+                                          });
+                                        }
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Container(
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            color: chosen ==
+                                                options[questionNumber][0]
+                                                ? options[questionNumber][0] ==
+                                                correctOptions[questionNumber] ?
+                                            Colors.greenAccent :
+                                            Colors.redAccent
+                                                :
+                                            Colors.white,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(30)),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                options[questionNumber][0],
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        quizData.notAttempted += 1;
+                                        if (!answered) {
+                                          setState(() {
+                                            chosen = options[questionNumber][1];
+                                            answered = true;
+                                            if (chosen ==
+                                                correctOptions[questionNumber]) {
+                                              quizData.correct += 1;
+                                            }
+                                            else {
+                                              quizData.incorrect += 1;
+                                            }
+                                          });
+                                        }
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                                        child: Container(
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            color: chosen ==
+                                                options[questionNumber][1]
+                                                ? options[questionNumber][1] ==
+                                                correctOptions[questionNumber] ?
+                                            Colors.greenAccent :
+                                            Colors.redAccent
+                                                :
+                                            Colors.white,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(30)),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                options[questionNumber][1],
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        if (!answered) {
+                                          quizData.notAttempted += 1;
+                                          setState(() {
+                                            chosen = options[questionNumber][2];
+                                            answered = true;
+                                            if (chosen ==
+                                                correctOptions[questionNumber]) {
+                                              quizData.correct += 1;
+                                            }
+                                            else {
+                                              quizData.incorrect += 1;
+                                            }
+                                          });
+                                        }
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                                        child: Container(
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            color: chosen ==
+                                                options[questionNumber][2]
+                                                ? options[questionNumber][2] ==
+                                                correctOptions[questionNumber] ?
+                                            Colors.greenAccent :
+                                            Colors.redAccent
+                                                :
+                                            Colors.white,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(30)),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                options[questionNumber][2],
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        if (!answered) {
+                                          quizData.notAttempted += 1;
+                                          setState(() {
+                                            chosen = options[questionNumber][3];
+                                            answered = true;
+                                            if (chosen ==
+                                                correctOptions[questionNumber]) {
+                                              quizData.correct += 1;
+                                            }
+                                            else {
+                                              quizData.incorrect += 1;
+                                            }
+                                          });
+                                        }
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                                        child: Container(
+                                          height: 60,
+                                          decoration: BoxDecoration(
+                                            color: chosen ==
+                                                options[questionNumber][3]
+                                                ? options[questionNumber][3] ==
+                                                correctOptions[questionNumber] ?
+                                            Colors.greenAccent :
+                                            Colors.redAccent
+                                                :
+                                            Colors.white,
+                                            borderRadius:
+                                            BorderRadius.all(Radius.circular(30)),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                options[questionNumber][3],
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 20
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
-              ),
-              Text(questions[questionNumber]),
-              Container(
-                child: Column(
-                  children: [
-                    ListView(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            quizData.notAttempted += 1;
-                            if (!answered) {
-                              setState(() {
-                                chosen = options[questionNumber][0];
-                                answered = true;
-                                if(chosen == correctOptions[questionNumber]){
-                                  quizData.correct += 1;
-                                }
-                                else{
-                                  quizData.incorrect += 1;
-                                }
-                              });
-                            }
-                          },
-                          child: Container(
-                            color: chosen == options[questionNumber][0] ?
-                            options[questionNumber][0] ==
-                                correctOptions[questionNumber] ?
-                            Colors.greenAccent :
-                            Colors.redAccent :
-                            Colors.white,
-                            child: Row(
-                              children: [
-                                Text(
-                                  options[questionNumber][0],
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            quizData.notAttempted += 1;
-                            if (!answered) {
-                              setState(() {
-                                chosen = options[questionNumber][1];
-                                answered = true;
-                                if(chosen == correctOptions[questionNumber]){
-                                  quizData.correct += 1;
-                                }
-                                else{
-                                  quizData.incorrect += 1;
-                                }
-                              });
-                            }
-                          },
-                          child: Container(
-                            color: chosen == options[questionNumber][1] ?
-                            options[questionNumber][1] ==
-                                correctOptions[questionNumber] ?
-                            Colors.greenAccent :
-                            Colors.redAccent :
-                            Colors.white,
-                            child: Row(
-                              children: [
-                                Text(
-                                  options[questionNumber][1],
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if (!answered) {
-                              quizData.notAttempted += 1;
-                              setState(() {
-                                chosen = options[questionNumber][2];
-                                answered = true;
-                                if(chosen == correctOptions[questionNumber]){
-                                  quizData.correct += 1;
-                                }
-                                else{
-                                  quizData.incorrect += 1;
-                                }
-                              });
-                            }
-                          },
-                          child: Container(
-                            color: chosen == options[questionNumber][2] ?
-                            options[questionNumber][2] ==
-                                correctOptions[questionNumber] ?
-                            Colors.greenAccent :
-                            Colors.redAccent :
-                            Colors.white,
-                            child: Row(
-                              children: [
-                                Text(
-                                  options[questionNumber][2],
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if (!answered) {
-                              quizData.notAttempted += 1;
-                              setState(() {
-                                chosen = options[questionNumber][3];
-                                answered = true;
-                                if(chosen == correctOptions[questionNumber]){
-                                  quizData.correct += 1;
-                                }
-                                else{
-                                  quizData.incorrect += 1;
-                                }
-                              });
-                            }
-                          },
-                          child: Container(
-                            color: chosen == options[questionNumber][3] ?
-                            options[questionNumber][3] ==
-                                correctOptions[questionNumber] ?
-                            Colors.greenAccent :
-                            Colors.redAccent :
-                            Colors.white,
-                            child: Row(
-                              children: [
-                                Text(
-                                  options[questionNumber][3],
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 20
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
                     ),
-                  ],
-                ),
+                  ]
               )
-            ],
           ),
         ),
       ),
