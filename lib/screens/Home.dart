@@ -1,17 +1,31 @@
 import 'package:evs_quiz_app/model/quizQuestionAndAnswers.dart';
 import 'package:evs_quiz_app/provider/user.dart';
 import 'package:evs_quiz_app/screens/quizQuestionScreens/Question.dart';
+import 'package:evs_quiz_app/services/HiveService.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
+
+  final score;
+
+  const Home({Key key, this.score}) : super(key: key);
+
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+
+  // Future<int> checkScore() async {
+  //   HiveService hiveService = Hive.box('preferences').getAt(0) as HiveService;
+  //   return hiveService.highScore;
+  // }
+
   @override
   Widget build(BuildContext context) {
+
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
     final userProvider = Provider.of<UserProvider>(context);
@@ -263,7 +277,7 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: [
                     Text(
-                      'Your highest score:',
+                      'Your highest score: ${widget.score}',
                       // textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20

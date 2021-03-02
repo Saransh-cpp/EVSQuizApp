@@ -4,20 +4,28 @@ import 'package:evs_quiz_app/screens/Home.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
+
+  final score;
+
+  const NavBar({Key key, this.score}) : super(key: key);
   @override
   _NavBarState createState() => _NavBarState();
 }
 
 class _NavBarState extends State<NavBar> {
+
   PageController pageController = PageController();
   int currentIndex = 0;
-  var currentTab = [
-    Home(),
-    AboutNGOs(),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+
+    var currentTab = [
+      Home(score: widget.score,),
+      AboutNGOs(),
+    ];
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
