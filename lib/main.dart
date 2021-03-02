@@ -20,7 +20,6 @@ Future<void> main() async {
   Hive.registerAdapter(HiveServiceAdapter());
   final highScore = await Hive.openBox('preferences');
 
-  highScore.putAt(0, 0);
 
   // try {
   //   final r = result.getAt(0) as HiveService ;
@@ -35,7 +34,7 @@ Future<void> main() async {
   //     highScore: 3,
   // ));
 
-  final score = highScore.getAt(0);
+  final score = highScore.getAt(0) ?? 'Play a game first :D';
 
   runApp(MyApp(score: score,));
 }

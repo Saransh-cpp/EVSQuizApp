@@ -4,6 +4,7 @@ import 'package:evs_quiz_app/screens/quizQuestionScreens/Question.dart';
 import 'package:evs_quiz_app/services/HiveService.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -23,14 +24,18 @@ class _HomeState extends State<Home> {
   //   return hiveService.highScore;
   // }
 
+  int highScore = Hive.box('preferences').getAt(0);
+
   @override
   Widget build(BuildContext context) {
+    print(widget.score);
 
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
     final userProvider = Provider.of<UserProvider>(context);
     QuizQuestionAndAnswers quizQuestionAndAnswers = QuizQuestionAndAnswers();
-    List<dynamic> questionAndAnswers = quizQuestionAndAnswers.questionsAndAnswers;
+    List<dynamic> questionAndAnswers = quizQuestionAndAnswers
+        .questionsAndAnswers;
     questionAndAnswers.shuffle();
 
     return SafeArea(
@@ -51,11 +56,11 @@ class _HomeState extends State<Home> {
                   accountName: Text(
                     userProvider.userModel?.name ?? "username loading...",
                     style: TextStyle(
-                      fontSize: 25
+                        fontSize: 25
                     ),
                   ),
                   accountEmail: Text(
-                    userProvider.userModel?.email ?? "email loading...",
+                      userProvider.userModel?.email ?? "email loading...",
                       style: TextStyle(
                           fontSize: 20
                       )
@@ -134,6 +139,16 @@ class _HomeState extends State<Home> {
           ),
         ),
         appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: Icon(Icons.refresh),
+              onPressed: () {
+                setState(() {
+
+                });
+              },
+            )
+          ],
           toolbarHeight: 70,
           backgroundColor: Colors.pink[50],
           elevation: 0,
@@ -256,7 +271,7 @@ class _HomeState extends State<Home> {
                     'Test your\nknowledge now!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 25
+                        fontSize: 25
                     ),
                   ),
                 ),
@@ -265,33 +280,46 @@ class _HomeState extends State<Home> {
             Container(
               margin: EdgeInsets.fromLTRB(40, 20, 40, 40),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  gradient: LinearGradient(
-                    colors: [Colors.pink[400], Colors.pink[100]],
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                  ),
-            ),
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                child: Column(
-                  children: [
-                    Text(
-                      'Your highest score: ${widget.score}',
-                      // textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Take the quiz again to boost your score!',
-                      textAlign: TextAlign.center,
-                    )
-                  ],
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                gradient: LinearGradient(
+                  colors: [Colors.pink[400], Colors.pink[100]],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
                 ),
+              ),
+              child: WatchBoxBuilder(
+                  box: Hive.box('preferences'),
+                  builder: (context, scoreBox) {
+                    if (scoreBox
+                        .getAt(0) == null) {
+                      return Center(
+                        child: Text(
+                            "Play a game :D"
+                        ),
+                      );
+                    }
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Your highest score: ${scoreBox.getAt(0)}',
+                            // textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            'Take the quiz again to boost your score!',
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      ),
+                    );
+                  }
               ),
             )
           ],

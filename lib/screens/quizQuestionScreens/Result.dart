@@ -1,5 +1,6 @@
 import 'package:evs_quiz_app/model/quizData.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 class Result extends StatefulWidget {
 
@@ -11,8 +12,21 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
+
   @override
   Widget build(BuildContext context) {
+
+    int score = widget.quizData.correct - widget.quizData.incorrect;
+    int prevHighScore = Hive.box('preferences').getAt(0);
+    print(score);
+    if(score > prevHighScore) {
+      print('yes');
+      Hive.box('preferences').putAt(0, score);
+      print(Hive.box('preferences').getAt(0));
+    }
+
+    print(Hive.box('preferences').getAt(0));
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
