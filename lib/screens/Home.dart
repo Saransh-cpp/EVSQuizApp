@@ -1,9 +1,8 @@
+import 'package:evs_quiz_app/model/quizQuestionAndAnswers.dart';
 import 'package:evs_quiz_app/provider/user.dart';
-import 'package:evs_quiz_app/screens/NavBar.dart';
 import 'package:evs_quiz_app/screens/quizQuestionScreens/Question.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:evs_quiz_app/widgets.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -16,6 +15,9 @@ class _HomeState extends State<Home> {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
     final userProvider = Provider.of<UserProvider>(context);
+    QuizQuestionAndAnswers quizQuestionAndAnswers = QuizQuestionAndAnswers();
+    List<dynamic> questionAndAnswers = quizQuestionAndAnswers.questionsAndAnswers;
+    questionAndAnswers.shuffle();
 
     return SafeArea(
       child: Scaffold(
@@ -124,14 +126,6 @@ class _HomeState extends State<Home> {
           iconTheme: IconThemeData(
               color: Colors.black87
           ),
-          // title: Text(
-          //   'EcoKnow',
-          //   textAlign: TextAlign.center,
-          //   style: TextStyle(
-          //       color: Colors.black87,
-          //       fontSize: 30
-          //   ),
-          // ),
         ),
         body: ListView(
           children: [
@@ -166,78 +160,80 @@ class _HomeState extends State<Home> {
               ),
               child: MaterialButton(
                 onPressed: () {
+                  questionAndAnswers.shuffle();
+                  print(questionAndAnswers);
                   Navigator.push(context, MaterialPageRoute(builder: (c) =>
                       Question(
-                        question1: 'Test1',
-                        question2: 'test2',
-                        question3: 'test3',
-                        question4: 'test4',
-                        question5: 'test5',
-                        question6: 'test6',
-                        question7: 'test7',
-                        question8: 'test8',
-                        question9: 'test9',
-                        question10: 'test10',
+                        question1: questionAndAnswers[0][0],
+                        question2: questionAndAnswers[1][0],
+                        question3: questionAndAnswers[2][0],
+                        question4: questionAndAnswers[3][0],
+                        question5: questionAndAnswers[4][0],
+                        question6: questionAndAnswers[5][0],
+                        question7: questionAndAnswers[6][0],
+                        question8: questionAndAnswers[7][0],
+                        question9: questionAndAnswers[8][0],
+                        question10: questionAndAnswers[9][0],
 
-                        question1option1: 'yes',
-                        question1option2: 'no',
-                        question1option3: 'probably',
-                        question1option4: 'dk',
-                        question1correctoption: 'yes',
+                        question1option1: questionAndAnswers[0][1][0],
+                        question1option2: questionAndAnswers[0][1][1],
+                        question1option3: questionAndAnswers[0][1][2],
+                        question1option4: questionAndAnswers[0][1][3],
+                        question1correctoption: questionAndAnswers[0][1][4],
 
-                        question2option1: 'yes',
-                        question2option2: 'no',
-                        question2option3: 'probably',
-                        question2option4: 'dk',
-                        question2correctoption: 'yes',
+                        question2option1: questionAndAnswers[1][1][0],
+                        question2option2: questionAndAnswers[1][1][1],
+                        question2option3: questionAndAnswers[1][1][2],
+                        question2option4: questionAndAnswers[1][1][3],
+                        question2correctoption: questionAndAnswers[1][1][4],
 
-                        question3option1: 'yes',
-                        question3option2: 'no',
-                        question3option3: 'probably',
-                        question3option4: 'dk',
-                        question3correctoption: 'yes',
+                        question3option1: questionAndAnswers[2][1][0],
+                        question3option2: questionAndAnswers[2][1][1],
+                        question3option3: questionAndAnswers[2][1][2],
+                        question3option4: questionAndAnswers[2][1][3],
+                        question3correctoption: questionAndAnswers[2][1][4],
 
-                        question4option1: 'yes',
-                        question4option2: 'no',
-                        question4option3: 'probably',
-                        question4option4: 'dk',
-                        question4correctoption: 'yes',
+                        question4option1: questionAndAnswers[3][1][0],
+                        question4option2: questionAndAnswers[3][1][1],
+                        question4option3: questionAndAnswers[3][1][2],
+                        question4option4: questionAndAnswers[3][1][3],
+                        question4correctoption: questionAndAnswers[3][1][4],
 
-                        question5option1: 'yes',
-                        question5option2: 'no',
-                        question5option3: 'probably',
-                        question5option4: 'dk',
-                        question5correctoption: 'yes',
+                        question5option1: questionAndAnswers[4][1][0],
+                        question5option2: questionAndAnswers[4][1][1],
+                        question5option3: questionAndAnswers[4][1][2],
+                        question5option4: questionAndAnswers[4][1][3],
+                        question5correctoption: questionAndAnswers[4][1][4],
 
-                        question6option1: 'yes',
-                        question6option2: 'no',
-                        question6option3: 'probably',
-                        question6option4: 'dk',
-                        question6correctoption: 'yes',
+                        question6option1: questionAndAnswers[5][1][0],
+                        question6option2: questionAndAnswers[5][1][1],
+                        question6option3: questionAndAnswers[5][1][2],
+                        question6option4: questionAndAnswers[5][1][3],
+                        question6correctoption: questionAndAnswers[5][1][4],
 
-                        question7option1: 'yes',
-                        question7option2: 'no',
-                        question7option3: 'probably',
-                        question7option4: 'dk',
-                        question7correctoption: 'yes',
+                        question7option1: questionAndAnswers[6][1][0],
+                        question7option2: questionAndAnswers[6][1][1],
+                        question7option3: questionAndAnswers[6][1][2],
+                        question7option4: questionAndAnswers[6][1][3],
+                        question7correctoption: questionAndAnswers[6][1][4],
 
-                        question8option1: 'yes',
-                        question8option2: 'no',
-                        question8option3: 'probably',
-                        question8option4: 'dk',
-                        question8correctoption: 'yes',
+                        question8option1: questionAndAnswers[7][1][0],
+                        question8option2: questionAndAnswers[7][1][1],
+                        question8option3: questionAndAnswers[7][1][2],
+                        question8option4: questionAndAnswers[7][1][3],
+                        question8correctoption: questionAndAnswers[7][1][4],
 
-                        question9option1: 'yes',
-                        question9option2: 'no',
-                        question9option3: 'probably',
-                        question9option4: 'dk',
-                        question9correctoption: 'yes',
+                        question9option1: questionAndAnswers[8][1][0],
+                        question9option2: questionAndAnswers[8][1][1],
+                        question9option3: questionAndAnswers[8][1][2],
+                        question9option4: questionAndAnswers[8][1][3],
+                        question9correctoption: questionAndAnswers[8][1][4],
 
-                        question10option1: 'yes',
-                        question10option2: 'no',
-                        question10option3: 'probably',
-                        question10option4: 'dk',
-                        question10correctoption: 'yes',
+                        question10option1: questionAndAnswers[9][1][0],
+                        question10option2: questionAndAnswers[9][1][1],
+                        question10option3: questionAndAnswers[9][1][2],
+                        question10option4: questionAndAnswers[9][1][3],
+                        question10correctoption: questionAndAnswers[9][1][4],
                       )));
                 },
                 child: Padding(

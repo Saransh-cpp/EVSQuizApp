@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AllTopics extends StatefulWidget {
+class AboutUs extends StatefulWidget {
   @override
-  _AllTopicsState createState() => _AllTopicsState();
+  _AboutUsState createState() => _AboutUsState();
 }
 
-class _AllTopicsState extends State<AllTopics> {
+class _AboutUsState extends State<AboutUs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
