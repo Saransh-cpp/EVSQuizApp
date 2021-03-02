@@ -63,7 +63,8 @@ class _RegisterState extends State<Register> {
                   height: 70,
                 ),
                 Text(
-                  'Welcome to\n EcoKnow!',
+                  'Welcome to\nEcoKnow!',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 40
@@ -309,13 +310,13 @@ class _RegisterState extends State<Register> {
                         },
                         child: Text(
                           'I already have an account',
-                          style: TextStyle(color: Colors.red, fontSize: 15),
+                          style: TextStyle(color: Colors.lightBlueAccent[100], fontSize: 15),
                         ),
                       ),
                       Text(
                         error,
                         style: TextStyle(
-                          color: Colors.red,
+                          color: Colors.lightBlueAccent[100],
                         ),
                       )
                     ],
