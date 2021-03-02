@@ -21,7 +21,8 @@ class _NavBarState extends State<NavBar> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: PageView(
+        body:
+        PageView(
           children: currentTab,
           controller: pageController,
           onPageChanged: (int index) {
@@ -32,7 +33,9 @@ class _NavBarState extends State<NavBar> {
         ),
         bottomNavigationBar: CurvedNavigationBar(
             height: 60.0,
-            backgroundColor: Colors.pink[50],
+            // color: Colors.black,
+            // buttonBackgroundColor: Colors.white,
+            backgroundColor: Colors.black87,
             items: <Widget>[
               Icon(
                   Icons.home_rounded,
