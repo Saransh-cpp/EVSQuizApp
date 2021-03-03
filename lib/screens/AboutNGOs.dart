@@ -1,3 +1,4 @@
+import 'package:evs_quiz_app/widgets.dart';
 import 'package:flutter/material.dart';
 
 class AboutNGOs extends StatefulWidget {
@@ -10,10 +11,39 @@ class _AboutNGOsState extends State<AboutNGOs> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.pink[50],
-      body: Center(
-        child: Text(
-          'About NGOs'
-        ),
+      body: ListView(
+        children: [
+          NGOCard(
+            name: 'Name',
+            description: 'Description',
+            website: 'www.kuchbhee.com',
+            number: 'XXXXXXXXXX',
+          ),
+          NGOCard(
+            name: 'Name',
+            description: 'Description',
+            website: 'www.kuchbhee.com',
+            number: 'XXXXXXXXXX',
+          ),
+          NGOCard(
+            name: 'Name',
+            description: 'Description',
+            website: 'www.kuchbhee.com',
+            number: 'XXXXXXXXXX',
+          ),
+          NGOCard(
+            name: 'Name',
+            description: 'Description',
+            website: 'www.kuchbhee.com',
+            number: 'XXXXXXXXXX',
+          ),
+          NGOCard(
+            name: 'Name',
+            description: 'Description',
+            website: 'www.kuchbhee.com',
+            number: 'XXXXXXXXXX',
+          )
+        ],
       ),
     );
   }
