@@ -312,6 +312,29 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             height: 20,
                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                  icon: Icon(
+                                      Icons.refresh
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      scoreBox.putAt(0, 0);
+                                    });
+                                  }
+                              ),
+                              Text(
+                                'Reset your score here',
+                                textAlign: TextAlign.center,
+                              )
+
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
                           Text(
                             'Take the quiz again to boost your score!',
                             textAlign: TextAlign.center,
