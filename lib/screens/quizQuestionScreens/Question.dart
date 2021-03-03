@@ -165,10 +165,14 @@ class _QuestionState extends State<Question> {
             chosen = '';
             answered = false;
           });
-        } else if(questionNumber == 9){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (C) => Result(
-              quizData: quizData,
-            )));
+        } else if (questionNumber == 9) {
+          Navigator.pushReplacement(context, PageRouteBuilder(
+            pageBuilder: (c, a1, a2) =>
+                Result(quizData: quizData,),
+            transitionsBuilder: (c, anim, a2, child) =>
+                FadeTransition(
+                    opacity: anim, child: child),
+          ));
         }
       },
     );

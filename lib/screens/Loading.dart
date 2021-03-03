@@ -13,12 +13,15 @@ class _LoadingState extends State<Loading> {
       color: Colors.pink[50],
       debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: Container(
-          child: Center(
-              child: SpinKitPouringHourglass(
-                size: 50,
-                color: Colors.brown,
-              )
+        child: Scaffold(
+          backgroundColor: Colors.pink[50],
+          body: Container(
+            child: Center(
+                child: SpinKitPouringHourglass(
+                  size: 50,
+                  color: Colors.brown,
+                )
+            ),
           ),
         ),
       ),
