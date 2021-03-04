@@ -21,13 +21,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Features
 
-- Topicwise distributed Questions
+- Random 10 Questions
 
 - User data stored in Firestore
 
-- Login / Signup / Signout Available (To save progress online)
+- Login / Signup / Signout Available 
 
 - Firebase Connectivity
+
+- [HiveDB](https://github.com/hivedb/hive) used to store user's score locally
 
 ## Further Plans
 
