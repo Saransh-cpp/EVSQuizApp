@@ -24,25 +24,13 @@ class _AboutUsState extends State<AboutUs> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: MediaQuery.of(context).size.height/1.85,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 1.85,
               // width: MediaQuery.of(context).size.width,
               child: Stack(
                   children: [
-                    Positioned(
-                      top: 20,
-                        left: MediaQuery.of(context).size.width/3,
-                        child: Container(
-                          child: Text(
-                            'EcoKnow',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black
-                            ),
-                          ),
-                        )
-                    ),
                     Positioned(
                       top: 0,
                       child: SvgPicture.asset(
@@ -50,11 +38,32 @@ class _AboutUsState extends State<AboutUs> {
                       ),
                     ),
                     Positioned(
+                        top: 20,
+                        left: MediaQuery
+                            .of(context)
+                            .size
+                            .width / 5,
+                        child: Container(
+                          child: Text(
+                            'EcoKnow',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black
+                            ),
+                          ),
+                        )
+                    ),
+                    Positioned(
                       top: 150,
                       child: Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width,
                         child: Text(
-                          "EcoKnow is a quiz app based on environmental studies!\n\nYou can answer questions and learn stuff\nand the app will store your score\nautomatically\n\nYou can also explore the NGOs section\nto donate and help them in making\nthis world better, piece by piece",
+                          "EcoKnow is a quiz app based on environmental studies!\n\nYou can answer questions and learn stuff\nand the app will store your score\nautomatically\n\nYou can also explore the NGOs section\nto donate and help them in making\nthis world better, piece by piece.",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
@@ -77,7 +86,10 @@ class _AboutUsState extends State<AboutUs> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height/5.9,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 5.9,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
