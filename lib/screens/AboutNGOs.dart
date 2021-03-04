@@ -36,7 +36,7 @@ class _AboutNGOsState extends State<AboutNGOs> {
           NGOCard(
             name: 'Being Green',
             description: 'Being Green believes in living sustainably in a Green Society and for us, the word Green manifests environment responsibility and resources efficiency for better tomorrow',
-            website: '​www.beinggreens.org',
+            website: 'www.beinggreens.org',
             number: '+91 - 9212451825',
           ),
           NGOCard(
@@ -48,7 +48,7 @@ class _AboutNGOsState extends State<AboutNGOs> {
           NGOCard(
             name: 'M.C. Mehta\nEnvironmental Foundation',
             description: 'MCMEF is a non-profit, non-governmental committed organization working nationwide for the protection of the environment, the rights of the people to clean and fresh water and air, the promotion of sustainable development, and the protection of the cultural heritage of India.',
-            website: '​www.mcmef.org',
+            website: 'www.mcmef.org',
             number: '(011) – 41756519',
           ),
           NGOCard(
@@ -66,7 +66,7 @@ class _AboutNGOsState extends State<AboutNGOs> {
           NGOCard(
             name: 'Indian Environmental\nSociety',
             description: 'Indian Environmental Society has been providing a leadership role in the field of environment and resource management since its inception. IES has been engaged in environmental development activities with a philosophy of self-help and community participation.',
-            website: '​www.iesglobal.org',
+            website: 'www.iesglobal.org',
             number: '+91-11-43801354',
           ),
           NGOCard(

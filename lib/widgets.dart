@@ -78,7 +78,7 @@ class NGOCard extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () async{
-                      await canLaunch(website) ? await launch(website) : throw 'Could not launch $website';
+                      await canLaunch('https://$website') ? await launch('https://$website') : throw 'Could not launch https://$website';
                     },
                     child: Text(
                         website,
