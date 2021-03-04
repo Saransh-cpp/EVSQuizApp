@@ -90,3 +90,11 @@ class NGOCard extends StatelessWidget {
   }
 }
 
+class ContributorCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card();
+  }
+}
+
+
