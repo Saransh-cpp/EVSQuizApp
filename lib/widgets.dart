@@ -26,6 +26,7 @@ class NGOCard extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                   child: Text(
                     name,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 30,
                       fontWeight: FontWeight.bold
