@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NGOCard extends StatelessWidget {
 
@@ -75,10 +76,15 @@ class NGOCard extends StatelessWidget {
                         fontSize: 20
                     ),
                   ),
-                  Text(
-                      website,
-                    style: TextStyle(
-                        fontSize: 20
+                  InkWell(
+                    onTap: () async{
+                      await canLaunch(website) ? await launch(website) : throw 'Could not launch $website';
+                    },
+                    child: Text(
+                        website,
+                      style: TextStyle(
+                          fontSize: 20
+                      ),
                     ),
                   )
                 ],
