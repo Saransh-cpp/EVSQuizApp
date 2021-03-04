@@ -98,9 +98,30 @@ class NGOCard extends StatelessWidget {
 }
 
 class ContributorCard extends StatelessWidget {
+
+  final String name;
+  final String GitHubUsername;
+  final String GitHubLink;
+
+  const ContributorCard({Key key, this.name, this.GitHubUsername, this.GitHubLink}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Card();
+    return Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+      child: Column(
+        children: [
+          Text(
+            name
+          ),
+          Text(
+            'GitHub - $GitHubUsername'
+          )
+        ],
+      ),
+    );
   }
 }
 

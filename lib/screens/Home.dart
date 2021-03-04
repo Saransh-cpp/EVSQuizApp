@@ -1,6 +1,7 @@
 import 'package:evs_quiz_app/model/quizQuestionAndAnswers.dart';
 import 'package:evs_quiz_app/provider/user.dart';
 import 'package:evs_quiz_app/screens/AboutUs.dart';
+import 'package:evs_quiz_app/screens/Contributors.dart';
 import 'package:evs_quiz_app/screens/quizQuestionScreens/Question.dart';
 import 'package:evs_quiz_app/services/HiveService.dart';
 import 'package:flutter/material.dart';
@@ -115,7 +116,15 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       onTap: () {
-                        // userProvider.signOut();
+                        Navigator.of(context).pop();
+                        Navigator.push(context,
+                            PageRouteBuilder(
+                              pageBuilder: (c, a1, a2) =>
+                                  Contributors(),
+                              transitionsBuilder: (c, anim, a2, child) =>
+                                  FadeTransition(
+                                      opacity: anim, child: child),
+                            ));
                       },
                     ),
                     Divider(color: Colors.black,),
