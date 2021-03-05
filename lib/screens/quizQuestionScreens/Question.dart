@@ -336,8 +336,8 @@ class _QuestionState extends State<Question> {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        quizData.notAttempted += 1;
                                         if (!answered) {
+                                          quizData.notAttempted += 1;
                                           setState(() {
                                             chosen = options[questionNumber][0];
                                             answered = true;
@@ -385,8 +385,8 @@ class _QuestionState extends State<Question> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        quizData.notAttempted += 1;
                                         if (!answered) {
+                                          quizData.notAttempted += 1;
                                           setState(() {
                                             chosen = options[questionNumber][1];
                                             answered = true;
