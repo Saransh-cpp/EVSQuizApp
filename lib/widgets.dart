@@ -108,16 +108,26 @@ class ContributorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            name
+            name,
+            style: TextStyle(
+              fontSize: 25
+            ),
           ),
-          Text(
-            'GitHub - $GitHubUsername'
+          InkWell(
+            onTap: () async {
+              await canLaunch(GitHubLink) ? await launch(GitHubLink) : throw 'Could not launch $GitHubLink';
+            },
+            child: Text(
+              'GitHub - $GitHubUsername'
+            ),
           )
         ],
       ),

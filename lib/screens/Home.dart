@@ -95,6 +95,7 @@ class _HomeState extends State<Home> {
                               transitionsBuilder: (c, anim, a2, child) =>
                                   FadeTransition(
                                       opacity: anim, child: child),
+                              transitionDuration: Duration(milliseconds: 1000)
                             ));
                       },
                     ),
