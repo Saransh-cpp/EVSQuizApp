@@ -18,7 +18,15 @@ Future<void> main() async {
   Hive.init(directory.path);
 
   Hive.registerAdapter(HiveServiceAdapter());
-  final highScore = await Hive.openBox('preferences');
+  await Hive.openBox('preferences');
+  try {
+      final r = Hive.box('preferences').getAt(0);
+    } on RangeError catch (e) {
+      print('Exception');
+      Hive.box('preferences').add(0);
+
+    }
+    print(Hive.box('preferences').getAt(0));
 
 
   // try {
@@ -34,9 +42,9 @@ Future<void> main() async {
   //     highScore: 3,
   // ));
 
-  final score = highScore.getAt(0) ?? 'Play a game first :D';
+  // final score = highScore.getAt(0) ?? 'Play a game first :D';
 
-  runApp(MyApp(score: score,));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -45,9 +53,6 @@ class MyApp extends StatelessWidget {
   //   HiveService hiveService = Hive.box('preferences').getAt(0) as HiveService;
   //   return hiveService.highScore;
   // }
-  final score;
-
-  const MyApp({Key key, this.score}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,16 +64,13 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ScreensController(score: score,)
+          home: ScreensController()
       ),
     );
   }
 }
 
 class ScreensController extends StatelessWidget {
-  final score;
-
-  const ScreensController({Key key, this.score}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +82,7 @@ class ScreensController extends StatelessWidget {
       case Status.Authenticating:
         return LoginPage();
       case Status.Authenticated:
-        return NavBar(score: score,);
+        return NavBar();
       default: return LoginPage();
     }
   }

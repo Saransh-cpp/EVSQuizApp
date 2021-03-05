@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
 
-  final score;
 
-  const NavBar({Key key, this.score}) : super(key: key);
   @override
   _NavBarState createState() => _NavBarState();
 }
@@ -22,7 +20,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
 
     var currentTab = [
-      Home(score: widget.score,),
+      Home(),
       AboutNGOs(),
     ];
 

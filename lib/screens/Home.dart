@@ -11,10 +11,6 @@ import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
 
-  final score;
-
-  const Home({Key key, this.score}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -30,7 +26,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.score);
 
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
 
