@@ -1,6 +1,8 @@
 # EVS Quiz App
 
-EVS semester long project. In development.
+- EVS semester long project. 
+- A simple app with 10 random questions for the user related to EVS to raise awareness.
+- Uses **HiveDB**, **Firebase** and **Firestore**.
 
 ## Getting Started
 
